@@ -4,9 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace e_Tickets.Models
 {
-    public class Movies
+    public class Movies:Basemodel
     {
-        public int Id { get; set; }
         [Required]
         public string? Name { get; set; }
         [Required]

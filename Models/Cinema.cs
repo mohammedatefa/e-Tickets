@@ -2,9 +2,9 @@
 
 namespace e_Tickets.Models
 {
-    public class Cinema
+    public class Cinema:Basemodel
     {
-        public int Id { get; set; }
+        
         [Required]
         public string? Name { get; set; }
         [Required]

@@ -1,4 +1,6 @@
 using e_Tickets.Context;
+using e_Tickets.Data.DataSeeding;
+using e_Tickets.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace e_Tickets
@@ -13,12 +15,18 @@ namespace e_Tickets
             builder.Services.AddControllersWithViews();
 
             //add database service
-            builder.Services.AddDbContext<ETicketsDbContext1>(options =>
+            builder.Services.AddDbContext<ETicketsDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefualtConnectionString"));
             });
 
+            //inject the Igenericrepositor
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(TicketsGenericRepositry<>));
+
             var app = builder.Build();
+
+            //add datasedding 
+            ETicketsDbSeedding.DataSeeding(app);
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

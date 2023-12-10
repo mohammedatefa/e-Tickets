@@ -2,9 +2,9 @@
 
 namespace e_Tickets.Models
 {
-    public class Actor
+    public class Actor:Basemodel
     {
-        public int Id { get; set; }
+        
         [Required]
         public string? FullName { get; set; }
         [Required]

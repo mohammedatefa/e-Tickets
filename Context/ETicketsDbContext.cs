@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace e_Tickets.Context
 {
-    public class ETicketsDbContext1:DbContext
+    public class ETicketsDbContext:DbContext
     {
-        public ETicketsDbContext1() {}
+        public ETicketsDbContext() {}
         //database connectionstring 
-        public ETicketsDbContext1(DbContextOptions<ETicketsDbContext1> options) : base(options) { }
+        public ETicketsDbContext(DbContextOptions<ETicketsDbContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,5 +24,12 @@ namespace e_Tickets.Context
 
             base.OnModelCreating(modelBuilder);
         }
+
+        //the dbsets on our database
+        public DbSet<Actor> Actors { get; set; }
+        public DbSet<Cinema> Cinemas { get; set; }
+        public DbSet<Movies> Movies { get; set; }
+        public DbSet<Producer> Producers { get; set; }
+        public DbSet<Actors_Movies> Actors_Movies { get; set; }
     }
 }

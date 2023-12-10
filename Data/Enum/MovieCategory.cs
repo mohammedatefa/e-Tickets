@@ -7,6 +7,8 @@
         Drama,
         Hiestorical,
         Family,
-        Romantic
+        Romantic,
+        Hororr,
+        Adventure
     }
 }
