@@ -15,7 +15,7 @@ namespace e_Tickets.Controllers
         public async Task<IActionResult> Index()
         {
             var data = await context.Getall();
-            return View();
+            return View(data);
         }
     }
 }

@@ -1,0 +1,63 @@
+﻿@* define the model of movies *@
+@model IEnumerable<Movies>
+@* define the viewdata *@
+@{
+    ViewData["Title"] = "list of movies";
+}
+@* define the html code *@
+<section>
+    <div class="row">
+        @foreach (var movie in Model)
+        {
+            <div class="col-md-4 col-xs-6 border-primary mb-3" style="min-height:372px
+">
+                <div class="card mb-3" style="max-width:550px">
+                    <div class="row g-0">
+                        <div class="col-md-12">
+                            <div class="card-header text-white bg-info">
+                                <p class="card-text">
+                                    <h5 class="card-title">
+                                        @* split the movie name to be fixed number *@
+                                        @{
+                                            string movieName = @movie.Name;
+                                            string[] words = movieName.Split(' ');
+                                            string truncatedmovieName = string.Join(" ", words.Take(4));
+                                        }
+                                        @truncatedmovieName
+                                        <a class="text-white" style="float:right">
+                                            <i class="fa-regular fa-pen-to-square"></i>
+                                        </a>
+                                    </h5>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="@movie.ImageUrl" title="@movie.Name" alt="@movie.Name" width="100%" height="100%">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                @* <p class="card-text">@movie.Description</p> *@
+                                @* split the cinema name to be fixed number *@
+                                @{
+                                    string cinemaName = @movie.Cenima.Name;
+                                    string[] word = cinemaName.Split(' ');
+                                    string truncatedCinemaName = string.Join(" ", word.Take(3));
+                                }
+                                <p class="card-text">Cinema: @truncatedCinemaName</p>
+                                <p class="card-text">Category: @movie.Category</p>
+                                <p class="card-text">StartDate: @movie.StartDate.ToString("dd MMM yyy")</p>
+                                <p class="card-text">EndDate: @movie.EndDate.ToString("dd MMM yyy")</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card-footer">
+                                <a class="btn btn-sm btn-outline-primary" style="float:right"><i class="fa-regular fa-eye"></i>View Detailes</a>
+                                <a class="btn btn-sm btn-success text-white"> <i class="fa-solid fa-cart-plus"></i>Add To Cart Price: @movie.Price.ToString("c")</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

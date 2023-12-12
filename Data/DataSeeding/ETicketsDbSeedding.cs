@@ -33,7 +33,7 @@ namespace e_Tickets.Data.DataSeeding
                         new Actor
                         {
                             FullName="Hirokazu Kore-eda",
-                            ImageUrl="https://image.tmdb.org/t/p/w500/Z1JeznJExodyj0iUbL1wgkts88.jpg",
+                            ImageUrl="https://th.bing.com/th/id/OIP.2p3J2xXoNL0-QkxiOlLA4gHaIy?rs=1&pid=ImgDetMain",
                             Bio="Renowned for their captivating performances and versatile acting prowess,he has etched an indelible mark in the world of entertainment. With a career spanning several decades"
                         },
                         new Actor

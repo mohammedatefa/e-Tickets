@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace e_Tickets.Models
 {
@@ -6,10 +7,13 @@ namespace e_Tickets.Models
     {
         
         [Required]
+        [DisplayName("Name")]
         public string? Name { get; set; }
         [Required]
+        [DisplayName("logo")]
         public string? Logo { get; set; }
         [Required]
+        [DisplayName("Description")]
         public string? Description { get; set; }
 
 

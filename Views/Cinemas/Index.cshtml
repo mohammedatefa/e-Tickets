@@ -1,0 +1,52 @@
+﻿@* define the model of cinemas *@
+@model IEnumerable<Cinema>
+@* define the viewdata *@
+@{
+    ViewData["Title"] = "List of Cinemas";
+}
+@* DefineSection code *@
+<section>
+    <div class="row">
+        <div class="col-md-11 m-auto">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model=>model.Logo)</th>
+                        <th>@Html.DisplayNameFor(model=>model.Name)</th>
+                        <th>@Html.DisplayNameFor(model=>model.Description)</th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var actor in Model)
+                    {
+                        <tr>
+                            <td class="align-middle">
+                                <img src="@actor.Logo" title="@actor.Name" style="width:150px;height:150px;border-radius:50%">
+                            </td>
+                            <td class="align-middle" style="width:20%">
+                                @actor.Name
+                            </td>
+                            <td class="align-middle" style="width:40%">
+                                @actor.Description
+                            </td>
+                            <td class="align-middle">
+                                <a class="btn btn-sm btn-outline-success">
+                                    <i class="fa-regular fa-pen-to-square"></i> Edit
+                                </a> |
+                                <a class="btn btn-sm btn-outline-warning">
+                                    <i class="fa-regular fa-eye"></i> View
+                                </a> |
+                                <a class="btn btn-sm btn-danger text-white">
+                                    <i class="fa-regular fa-trash-can"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
