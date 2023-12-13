@@ -18,5 +18,8 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  padding-top:65px
+}
+.movieSearch:hover{
+    color:white;
 }
