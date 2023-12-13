@@ -11,6 +11,12 @@ namespace e_Tickets.Repository
         //get model useing the specification class instead of using the normal way to include any property 
         public Task<IReadOnlyList<T>> GetAllWithSpec(ISpecification<T> spec);
         public Task<T> GetByIdWithSpec(ISpecification<T> spec);
+
+
+        //crud Operation
+        public Task Add(T entity);
+        public Task Update(int id,T entity);
+        public Task Delete(int id);
     }
 
    
