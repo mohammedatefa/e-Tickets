@@ -60,13 +60,14 @@ namespace e_Tickets.Repository
         }
         public async Task Update(int id, T entity)
         {
-            var found = await GetById(id);
+            var found = await context.Set<T>().FindAsync(id);
             if (found != null)
             {
                 try
                 {
-                    context.Set<T>().Update(entity);
-                    context.SaveChanges();
+                    // Update the properties of the found entity with the properties of the provided entity
+                    context.Entry(found).CurrentValues.SetValues(entity);
+                    await context.SaveChangesAsync();
                 }
                 catch (Exception ex)
                 {

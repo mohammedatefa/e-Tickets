@@ -36,13 +36,13 @@
                                 @actor.Bio
                             </td>
                             <td class="align-middle">
-                                <a class="btn btn-sm btn-outline-success">
+                                <a class="btn btn-sm btn-outline-success" asp-action="Update" asp-route-Id="@actor.Id">
                                     <i class="fa-regular fa-pen-to-square"></i> Edit
                                 </a> |
                                 <a class="btn btn-sm btn-outline-warning">
                                     <i class="fa-regular fa-eye"></i> View
                                 </a> |
-                                <a class="btn btn-sm btn-danger text-white">
+                                <a class="btn btn-sm btn-danger text-white" asp-action="Delete" asp-route-Id="@actor.Id">
                                     <i class="fa-regular fa-trash-can"></i> Delete
                                 </a>
                             </td>
@@ -52,4 +52,6 @@
             </table>
         </div>
     </div>
+    <a asp-action="Create" class="btn btn-sm btn-success" style="position:fixed; bottom:25px; right:25px"> 
+        <i class="fa fa-plus mx-1"></i>Add New Actor</a>
 </section>

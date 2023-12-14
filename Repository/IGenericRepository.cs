@@ -13,7 +13,7 @@ namespace e_Tickets.Repository
         public Task<T> GetByIdWithSpec(ISpecification<T> spec);
 
 
-        //crud Operation
+        //crud Operations
         public Task Add(T entity);
         public Task Update(int id,T entity);
         public Task Delete(int id);
