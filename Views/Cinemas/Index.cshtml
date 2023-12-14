@@ -20,26 +20,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var actor in Model)
+                    @foreach (var cenima in Model)
                     {
                         <tr>
                             <td class="align-middle">
-                                <img src="@actor.Logo" title="@actor.Name" style="width:150px;height:150px;border-radius:50%">
+                                <img src="@cenima.Logo" title="@cenima.Name" style="width:150px;height:150px;border-radius:50%">
                             </td>
                             <td class="align-middle" style="width:20%">
-                                @actor.Name
+                                @cenima.Name
                             </td>
                             <td class="align-middle" style="width:40%">
-                                @actor.Description
+                                @cenima.Description
                             </td>
                             <td class="align-middle">
-                                <a class="btn btn-sm btn-outline-success">
+                                <a class="btn btn-sm btn-outline-success" asp-action="Update" asp-route-Id="@cenima.Id">
                                     <i class="fa-regular fa-pen-to-square"></i> Edit
                                 </a> |
                                 <a class="btn btn-sm btn-outline-warning">
                                     <i class="fa-regular fa-eye"></i> View
                                 </a> |
-                                <a class="btn btn-sm btn-danger text-white">
+                                <a class="btn btn-sm btn-danger text-white" asp-action="Delete" asp-route-Id="@cenima.Id">
                                     <i class="fa-regular fa-trash-can"></i> Delete
                                 </a>
                             </td>
@@ -49,4 +49,5 @@
             </table>
         </div>
     </div>
+    <a asp-action="Create" class="btn btn-sm btn-success" style="position:fixed; bottom:20px; right:15px"><i class="fa fa-plus"></i>Add New Cinema</a>
 </section>
