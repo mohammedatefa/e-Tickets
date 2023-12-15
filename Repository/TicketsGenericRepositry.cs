@@ -14,6 +14,7 @@ namespace e_Tickets.Repository
             context = _context;
         }
 
+        #region Getting Entity Without Specification
         public async Task<ICollection<T>> Getall()
         {
             return await context.Set<T>().ToListAsync();
@@ -22,7 +23,8 @@ namespace e_Tickets.Repository
         public async Task<T> GetById(int id)
         {
             return await context.Set<T>().FindAsync(id);
-        }
+        } 
+        #endregion
 
         #region getBy Using Specification
         public async Task<IReadOnlyList<T>> GetAllWithSpec(ISpecification<T> spec)
@@ -39,7 +41,6 @@ namespace e_Tickets.Repository
             return specificationEvaluter<T>.GetQuery(context.Set<T>(), specification);
         }
         #endregion
-
 
         #region crud operations Add,Update And delete
         public async Task Add(T entity)

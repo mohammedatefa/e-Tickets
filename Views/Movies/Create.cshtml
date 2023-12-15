@@ -1,0 +1,131 @@
+﻿@* define model *@
+@model Movies
+@* define viewdata *@
+@{
+    ViewData["Title"] = "Create New Movie";
+}
+<section>
+    <div class="row mb-5 pb-5">
+        <div class="col-md-10 offset-md-2">
+            <p>
+                <h2>Add New Movie</h2>
+            </p>
+            <div class="row">
+                <div class="col-md-8">
+                    <form asp-action="Create" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                       
+                        <div class="form-group">
+                            <label asp-for="ImageUrl" class="form-label"></label>
+                            <input id="ImageUrlInput" asp-for="ImageUrl" class="form-control" />
+                            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label  asp-for="Name" class="form-label"></label>
+                            <input id="TitleInput" asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label  asp-for="Description" class="form-label"></label>
+                            <input id="DescriptionInput" asp-for="Description" class="form-control" />
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="StartDate" class="form-label"></label>
+                            <input id="dateInput" asp-for="StartDate" class="form-control" />
+                            <span asp-validation-for="StartDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EndDate" class="form-label"></label>
+                            <input asp-for="EndDate" class="form-control" />
+                            <span asp-validation-for="EndDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Price" class="form-label"></label>
+                            <input asp-for="Price" class="form-control" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Category" class="form-label"></label>
+                            <select asp-for="Category" class="form-control">
+                                <option value="">Select Category</option>
+                                @foreach (var category in ViewBag.Categories)
+                                {
+                                    <option value="@category.ToString()">@category</option>
+                                }
+                            </select>
+                            <span class="text-danger" asp-validation-for="Category"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CinemaId" class="form-label"></label>
+                            <select asp-for="CinemaId" class="form-control">
+                                <option value="">Select Cinema</option>
+                                @foreach (var cinema in ViewBag.Cinemas)
+                                {
+                                    <option value="@cinema.Id">@cinema.Name</option>
+                                }
+                            </select>
+                            <span class="text-danger" asp-validation-for="Cenima"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ProducerId" class="form-label"></label>
+                            <select asp-for="ProducerId" class="form-control">
+                                <option value="">Select Producer</option>
+                                @foreach (var producer in ViewBag.Producers)
+                                {
+                                    <option value="@producer.Id">@producer.FullName</option>
+                                }
+                            </select>
+                            <span class="text-danger" asp-validation-for="Producer"></span>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="submit" value="Creat Now" class="btn btn-sm btn-success float-end" />
+                            <a asp-action="Index" class="btn btn-sm btn-secondary">
+                                Show All
+                            </a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center form-group">
+                        <img id="ImagePreview" width="100%" height="100%"/>
+                    </div>
+                    <span id="date" style="float:right"></span>
+                    <h4 class="text-capitalize"  id="Title"></h4>
+                    <p class="lead" id="MovieDescription"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@* dfine scripts *@
+@section Scripts{
+    <script>
+        // Get references to the input and img elements
+        const imageUrlInput = document.getElementById('ImageUrlInput');
+        const imagePreview = document.getElementById('ImagePreview');
+
+        // Attach an 'input' event listener to the input field
+        imageUrlInput.addEventListener('input', function () {
+            // Get the value from the input field
+            const imageUrl = this.value;
+
+            // Set the 'src' attribute of the img tag to the entered URL
+            imagePreview.src = imageUrl;
+        });
+        function bindInputToElement(inputId, elementId) {
+            const input = document.getElementById(inputId);
+            const element = document.getElementById(elementId);
+            input.addEventListener('input', function () {
+                const text = this.value;
+                element.innerHTML = text;
+            });
+        }
+        // Usage of the function for different inputs and elements
+        bindInputToElement('TitleInput', 'Title');
+        bindInputToElement('DescriptionInput', 'MovieDescription');
+        bindInputToElement('dateInput', 'date');
+    </script>
+
+}

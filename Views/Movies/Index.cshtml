@@ -24,7 +24,7 @@
                                             string truncatedmovieName = string.Join(" ", words.Take(4));
                                         }
                                         @truncatedmovieName
-                                        <a class="text-white" style="float:right">
+                                        <a class="text-white" style="float:right" asp-action="Update" asp-route-Id="@movie.Id">
                                             <i class="fa-regular fa-pen-to-square"></i>
                                         </a>
                                     </h5>
@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <img src="@movie.ImageUrl" title="@movie.Name" alt="@movie.Name" width="100%" height="100%">
+                            <img src="@movie.ImageUrl" title="@movie.Name" alt="@movie.Name" width="177px" height="265.5px">
                         </div>
                         <div class="col-md-6">
                             <div class="card-body">
@@ -60,4 +60,5 @@
             </div>
         }
     </div>
+    <a class="btn btn-sm btn-success" style="position:fixed; bottom:20px; right:15px" asp-action="Create"><i class="fade fa-plus"></i>Add New Movie</a>
 </section>
