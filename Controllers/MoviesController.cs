@@ -80,5 +80,13 @@ namespace e_Tickets.Controllers
             ViewBag.Categories = Enum.GetValues(typeof(MovieCategory)).Cast<MovieCategory>();
             return View();
         }
+        [HttpGet]
+        public async Task<IActionResult> ViewDetailes(int id)
+        {
+            //to include cinema name using specification
+            var spec = new MoviesWithCinema(id);
+            var found = await context.GetByIdWithSpec(spec);
+            return View(found);
+        }
     }
 }

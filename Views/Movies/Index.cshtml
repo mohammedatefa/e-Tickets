@@ -51,7 +51,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="card-footer">
-                                <a class="btn btn-sm btn-outline-primary" style="float:right"><i class="fa-regular fa-eye"></i>View Detailes</a>
+                                <a class="btn btn-sm btn-outline-primary" style="float:right" asp-action="ViewDetailes" asp-route-Id="@movie.Id"><i class="fa-regular fa-eye"></i>View Detailes</a>
                                 <a class="btn btn-sm btn-success text-white"> <i class="fa-solid fa-cart-plus"></i>Add To Cart Price: @movie.Price.ToString("c")</a>
                             </div>
                         </div>

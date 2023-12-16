@@ -11,6 +11,7 @@ namespace e_Tickets.Specification
         public MoviesWithCinema(int id):base(m=>m.Id==id)
         {
             Includes.Add(m => m.Cenima);
+            Includes.Add(m => m.Producer);
         }
     }
 }
