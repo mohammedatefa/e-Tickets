@@ -4,6 +4,7 @@ using e_Tickets.Repository;
 using e_Tickets.Specification;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace e_Tickets.Controllers
 {
@@ -57,10 +58,11 @@ namespace e_Tickets.Controllers
         }
         #endregion
 
+        #region Update current movie Action
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
-            var found =await context.GetById(id);
+            var found = await context.GetById(id);
             ViewBag.Cinemas = await cinemaRepository.Getall();
             ViewBag.Producers = await producerRepository.Getall();
             ViewBag.Categories = Enum.GetValues(typeof(MovieCategory)).Cast<MovieCategory>();
@@ -68,7 +70,7 @@ namespace e_Tickets.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int id,Movies movie)
+        public async Task<IActionResult> Update(int id, Movies movie)
         {
             if (ModelState.IsValid)
             {
@@ -80,6 +82,9 @@ namespace e_Tickets.Controllers
             ViewBag.Categories = Enum.GetValues(typeof(MovieCategory)).Cast<MovieCategory>();
             return View();
         }
+        #endregion
+
+        #region View movie detailes Action
         [HttpGet]
         public async Task<IActionResult> ViewDetailes(int id)
         {
@@ -88,5 +93,19 @@ namespace e_Tickets.Controllers
             var found = await context.GetByIdWithSpec(spec);
             return View(found);
         }
-    }
+        #endregion
+
+        #region search movie Action
+        [HttpGet]
+        public async Task<IActionResult> SearchMovie(string movieName)
+        {
+
+            var spec = new MoviesWithCinema(movieName);
+            var movies = await context.GetAllWithSpec(spec);
+
+            return View(movies);
+
+        } 
+        #endregion 
+    }                                                                                                   
 }

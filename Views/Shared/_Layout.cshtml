@@ -37,9 +37,9 @@
                            </div>
                        </li>
                     </ul>
-                    <form class="d-flex" asp-controller="Movies" asp-action="filter">
-                        <input class="form-control me-2" type="search" placeholder="Search Movies.." aria-label="Search">
-                        <button class="btn btn-outline-info movieSearch" type="submit">Search</button>
+                    <form class="d-flex" asp-controller="Movies" asp-action="SearchMovie" method="get">
+                        <input class="form-control me-2" type="search" placeholder="Search Movies.." aria-label="Search" name="movieName">
+                        <button class ="btn btn-outline-info movieSearch" type="submit">Search</button>
                     </form>
                 </div>
             </div>

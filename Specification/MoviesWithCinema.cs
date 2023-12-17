@@ -13,5 +13,13 @@ namespace e_Tickets.Specification
             Includes.Add(m => m.Cenima);
             Includes.Add(m => m.Producer);
         }
+
+        //using search specification 
+        public MoviesWithCinema(string movieName) : base(m=>(string.IsNullOrEmpty(movieName))||m.Name.ToLower().Contains(movieName))
+        {
+            Includes.Add(m => m.Cenima);
+            Includes.Add(m => m.Producer);
+        }
+        
     }
 }
